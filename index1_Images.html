@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            font-size: 1.5em;
+        }
+
+        .portfolio-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .resume-card {
+            width: 300px;
+            height: 400px;
+            margin: 20px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .resume-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 120%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-face.front {
+            background-color: #fff;
+        }
+
+        .card-face.back {
+            background-color: #f5f5f5;
+            transform: rotateY(180deg);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .resume-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Portfolio</h1>
+    </header>
+
+    <div class="portfolio-container">
+        <!-- Resume 1 -->
+        <div class="resume-card">
+            <div class="card-inner">
+                <div class="card-face front">
+                    <!-- <img class="resume-image" src="data:image/png;base64,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" alt="Resume Image"> -->
+                    <h2>Abhishek Kumar</h2>
+                    <p>Web Developer</p>
+                    <p>1 year</p>
+                </div>
+                <div class="card-face back">
+                    <!-- Back content, you can add more details here -->
+                    <p>Abhishek Kumar is a recent Computer Science graduate with a passion for front-end development. His portfolio includes projects showcasing Hisproficiency in HTML, CSS, and JavaScript. She has interned at a tech startup, 
+                        where he played a key role in redesigning the company website, resulting in a 30% increase in user engagement.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume 2 -->
+        <div class="resume-card">
+            <div class="card-inner">
+                <div class="card-face front">
+                    <!-- <img class="resume-image" src="https://media.licdn.com/dms/image/D4D03AQEqWwRp-yhwPQ/profile-displayphoto-shrink_400_400/0/1668876083194?e=1710979200&v=beta&t=GLxubutLBEINsblGu-TUZ9seOsPwC9yy1KmsZiQkKRc" alt="Resume Image"> -->
+                    <h2>Anchal Lohmor</h2>
+                    <p>Data Scientist</p>
+                    <p>1 year</p>
+                </div>
+                <div class="card-face back">
+                    <!-- Back content, you can add more details here -->
+                    <p>Anchal Lohmor is a data scientist specializing in predictive analytics. With a Master's in Data Science, Anchal has successfully applied machine learning models to financial data, leading to improved risk assessment strategies. Her work contributed to a 15% reduction in investment portfolio volatility for her previous employer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more resumes as needed -->
+        <!-- Resume 3 -->
+        <div class="resume-card">
+            <div class="card-inner">
+                <div class="card-face front">
+                    <!-- <img class="resume-image" src="https://media.licdn.com/dms/image/D4D35AQFPRp-Q_1rM7Q/profile-framedphoto-shrink_400_400/0/1689919485154?e=1705899600&v=beta&t=nrjpDEhgbua5R0nnp_HV2iCnkxoBsvdWtLP8yQL79E0" alt="Resume Image"> -->
+                    <h2>Sneha Singh</h2>
+                    <p>Software Engineer</p>
+                    <p>1 year</p>
+                </div>
+                <div class="card-face back">
+                    <!-- Back content, you can add more details here -->
+                    <p>Sneha Singh is a software engineer specializing in artificial intelligence. Her portfolio showcases projects related to natural language processing and machine learning. During her academic tenure, Sneha Singh collaborated on a research project that involved developing a sentiment analysis model for social media data, leading to a published paper in a reputable conference.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume 4 -->
+        <div class="resume-card">
+            <div class="card-inner">
+                <div class="card-face front">
+                    <!-- <img class="resume-image" src="https://media.licdn.com/dms/image/D5635AQGILPLSK2xsIw/profile-framedphoto-shrink_400_400/0/1704611312841?e=1705899600&v=beta&t=h9of9tkhX_Dz3Peel60pd3JDG0-YaQF3garyIlRHyNA" alt="Resume Image"> -->
+                    <h2>Tamish Gambhir</h2>
+                    <p>Data Scientist</p>
+                    <p>1 year</p>
+                </div>
+                <div class="card-face back">
+                    <!-- Back content, you can add more details here -->
+                    <p>Tamish Gambhir is a data science enthusiast with a Bachelor's degree in Machine Learning. His portfolio features projects where he applied machine learning algorithms to solve real-world problems. During an internship at a healthcare analytics company, Tamish Gambhir developed a predictive model that improved patient outcome predictions by 20%.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume 5 -->
+        <div class="resume-card">
+            <div class="card-inner">
+                <div class="card-face front">
+                    <!-- <img class="resume-image" src="https://media.licdn.com/dms/image/D5635AQFYsRYzktug2w/profile-framedphoto-shrink_400_400/0/1705133883378?e=1705899600&v=beta&t=-EsmzMJBXS3OmRW4mwxAfPHIa9hQY1_umbzFu_T_1wQ" alt="Resume Image"> -->
+                    <h2>Yashdeep Yadav</h2>
+                    <p>Cybersecurity Analyst</p>
+                    <p>1 year</p>
+                </div>
+                <div class="card-face back">
+                    <!-- Back content, you can add more details here -->
+                    <p>Yashdeep Yadav is a cybersecurity graduate with a focus on ethical hacking. His portfolio showcases his skills in penetration testing and vulnerability assessment. Yashdeep Yadav completed a cybersecurity internship where he successfully identified and patched critical vulnerabilities in the company's network infrastructure, enhancing overall security.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // You can add JavaScript code for additional interactivity or transitions here
+    </script>
+
+</body>
+
+</html>
